@@ -1,0 +1,103 @@
+@import "./config.scss";
+@import "./mixins/index.scss";
+@import "./function.scss";
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background-color: $COLOR_LIGHTGRAY;
+  color: $COLOR_DEFAULT;
+  user-select: none;
+  font-family: "PingFang-SC-Regular, Source Sans Pro", "Helvetica Neue", Arial,
+    sans-serif;
+  -webkit-overflow-scrolling: touch;
+}
+
+body {
+  overscroll-behavior: none;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+a,
+a:link {
+  color: $COLOR_PRIMARY;
+}
+
+input,
+textarea {
+  -webkit-appearance: none;
+  box-shadow: none;
+}
+
+@for $size from $FONT_SIZE_START to $FONT_SIZE_END {
+  .font_#{$size} {
+    font-size: $size;
+  }
+}
+
+@for $size from $SIZE_START to $SIZE_END {
+  // padding
+  .pd_#{$size} {
+    @include padding(rem($size));
+  }
+  .pd_lf_#{$size} {
+    @include padding(rem($size), "left");
+  }
+  .pd_rt_#{$size} {
+    @include padding(rem($size), "right");
+  }
+  .pd_top_#{$size} {
+    @include padding(rem($size), "top");
+  }
+  .pd_btm_#{$size} {
+    @include padding(rem($size), "bottom");
+  }
+  // margin
+  .mg_#{$size} {
+    @include margin(rem($size));
+  }
+  .mg_lf_#{$size} {
+    @include margin(rem($size), "left");
+  }
+  .mg_rt_#{$size} {
+    @include margin(rem($size), "right");
+  }
+  .mg_top_#{$size} {
+    @include margin(rem($size), "top");
+  }
+  .mg_btm_#{$size} {
+    @include margin(rem($size), "bottom");
+  }
+}
+
+.bd-btm {
+  @include pxBorder($COLOR_LIGHTGRAY, "bottom");
+}
+
+.bd-top {
+  @include pxBorder($COLOR_LIGHTGRAY, "top");
+}
+
+.bd-lf {
+  @include pxBorder($COLOR_LIGHTGRAY, "left");
+}
+
+.bd-rt {
+  @include pxBorder($COLOR_LIGHTGRAY, "right");
+}

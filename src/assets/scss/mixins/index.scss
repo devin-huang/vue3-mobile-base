@@ -1,0 +1,46 @@
+@mixin pxBorder($color, $border: all) {
+  @if $border == all {
+    border: 1px solid $color;
+  } @else {
+    @each $member in $border {
+      border-#{$member}: 1px solid $color;
+    }
+  }
+  // 移动端根据不同分辨率设置
+  @media (-webkit-min-device-pixel-ratio: 2.5) {
+    -webkit-transform: scale(0.33333);
+    transform: scale(0.33333);
+  }
+
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  box-sizing: border-box;
+}
+
+@mixin margin($margin, $direction: all) {
+  @if $direction == all {
+    margin: $margin;
+  } @else if $direction == x {
+    margin-left: $margin;
+    margin-right: $margin;
+  } @else if $direction == y {
+    margin-top: $margin;
+    margin-bottom: $margin;
+  } @else {
+    margin-#{$direction}: $margin;
+  }
+}
+
+@mixin padding($padding, $direction: all) {
+  @if $direction == all {
+    padding: $padding;
+  } @else if $direction == x {
+    padding-left: $padding;
+    padding-right: $padding;
+  } @else if $direction == y {
+    padding-top: $padding;
+    padding-bottom: $padding;
+  } @else {
+    padding-#{$direction}: $padding;
+  }
+}

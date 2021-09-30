@@ -1,0 +1,9 @@
+@function rem($px) {
+  // 由于在浏览器里面字体大小正常，但是在小程序和app里面字体都比实际偏大，
+  // 所以从原来10改为9.5： #{$px / 750 * 10}rem  ===>  #{$px / 750 * 9.5}rem
+  @return #{$px / 750 * 9.5}rem;
+}
+
+@function vw($px) {
+  @return $px / 750 * 100vw;
+}

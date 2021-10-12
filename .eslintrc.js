@@ -16,6 +16,8 @@ module.exports = {
   rules: {
     "no-console": process.env.NODE_ENV === "production" ? "warn" : "off",
     "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
+    // 可使用require引入
+    "@typescript-eslint/no-var-requires": 0,
     // "@typescript-eslint/explicit-module-boundary-types": "off",
     // 禁用：防止this变量和局部变量混淆
     "@typescript-eslint/no-this-alias": ["off"],

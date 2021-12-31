@@ -4,21 +4,6 @@ export const delay = (timeout: number): any => {
   });
 };
 
-export const debounce = (fn, wait = 500): any => {
-  let timer: number;
-  return (...arg) => {
-    const context = this;
-    const args = arg;
-    if (timer) {
-      clearTimeout(timer);
-      timer = 0;
-    }
-    timer = setTimeout(() => {
-      fn.apply(context, args);
-    }, wait);
-  };
-};
-
 const checkId = () => {
   const { host } = window.location;
   let agentId = 1000161;
@@ -59,6 +44,11 @@ export const isEmpty = (val) => {
   return false;
 };
 
+let uniqueIdIndex = 0;
+export const uuid = (prefix: any = "") => {
+  const random = Math.random().toString(13).split(".")[1] || ""
+  return `${prefix || ""}${random.slice(0, 8)}${(uniqueIdIndex += 1)}`;
+};
 export const MODULE_AGENTID = checkId();
 export const CLIENT_NONCE_KEY = "CLIENT_NONCE_KEY";
 export const CLIENT_PUBLIC_KEY = "CLIENT_PUBLIC_KEY";

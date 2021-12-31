@@ -1,7 +1,30 @@
 <template>
-  <router-view />
+<!-- VUE3：用于 <transition> 和 <keep-alive> 包裹路由组件 -->
+  <router-view v-slot="{ Component, route }">
+    <transition :name="route.meta.transition || 'fade'" mode="out-in">
+      <keep-alive :include="keepAliveList">
+        <component :is="Component" :key="route.path" />
+      </keep-alive>
+    </transition>
+  </router-view>
 </template>
 
+<script lang="ts">
+import { defineComponent, reactive, toRefs } from "vue";
+import baseLayout from "@/base/baseLayout";
+
+export default defineComponent(
+  baseLayout({
+    setup() {
+      const state = reactive({
+        keepAliveList: ["Home", "PaymentList"],
+      });
+
+      return { ...toRefs(state) };
+    },
+  })
+);
+</script>
 <style lang="scss">
 @import "./assets/scss/base.scss";
 #app {

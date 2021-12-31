@@ -39,7 +39,7 @@ export const tokenKey = "x-http-token";
 export default {
   Accept: "*/*",
   "Content-Type": "application/json; charset=UTF-8",
-  "x-http-channel": "Daojia for rainbowcn mini project",
+  "x-http-channel": "mini project",
   "x-http-devicetype": "h5",
   "x-http-timestamp": Date.now(),
   "x-http-deviceuid": Date.now(),
